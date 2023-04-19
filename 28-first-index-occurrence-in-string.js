@@ -1,4 +1,21 @@
 /*
+faster solution logic in python file
+*/
+
+//O(n) where n is length of haystack
+var strStr = function(haystack, needle) {
+    for (let i = 0; i < haystack.length; i++) {
+        let haystackSlice = haystack.slice(i, i + needle.length);
+        if (haystackSlice === needle) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+
+
+/*
     2 strings, needle and haystack
     return index of first occurrence of needle in haystack or -1 if not present
 */
@@ -15,25 +32,27 @@
     8.) otherwise it wasn't found and return -1
 */
 
-var strStr = function(haystack, needle) {
-    let h = 0;
-    let n = 0
 
-    if (needle.length > haystack.length || !haystack) return -1;
-    if (!needle) return 0;
+// //slightly slower than pure O(n) where n is length of haystack
+// var strStr = function(haystack, needle) {
+//     let h = 0;
+//     let n = 0
 
-    while (h < haystack.length && n < needle.length) {
-        if (haystack[h] === needle[n]) {
-            h++;
-            n++;
-        } else {
-            h = (h - n) + 1;
-            n = 0;
-        }
-    }
-    if (n === needle.length) {
-        return (h - n);
-    } else {
-        return -1;
-    }
-};
+//     if (needle.length > haystack.length || !haystack) return -1;
+//     if (!needle) return 0;
+
+//     while (h < haystack.length && n < needle.length) {
+//         if (haystack[h] === needle[n]) {
+//             h++;
+//             n++;
+//         } else {
+//             h = (h - n) + 1;
+//             n = 0;
+//         }
+//     }
+//     if (n === needle.length) {
+//         return (h - n);
+//     } else {
+//         return -1;
+//     }
+// };
