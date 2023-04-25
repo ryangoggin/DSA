@@ -21,7 +21,7 @@ class Solution(object):
 
         return res
 
-# faster python solution
+# faster python solution O(1) time
 class Solution(object):
     def findErrorNums(self, nums):
         """
