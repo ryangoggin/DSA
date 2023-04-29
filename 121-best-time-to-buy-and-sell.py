@@ -19,3 +19,19 @@ class Solution(object):
             sell += 1
 
         return max_profit
+
+#  faster for loop implementation?
+
+class Solution(object):
+    def maxProfit(self, prices):
+        max_profit = 0
+        buy = prices[0]
+
+        # [7,1,5,3,6,4]
+        for price in prices:
+            if price < buy:
+                buy = price
+            if price - buy > max_profit:
+                max_profit = price- buy
+
+        return max_profit
