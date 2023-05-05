@@ -24,3 +24,17 @@ class Solution:
         return maxLen
 
 #  better O(n)
+class Solution:
+    def fasterLengthOfLongestSubstring(self, s: str) -> int:
+        curr_str = ""
+        max_str = ""
+
+        for char in s:
+            if char in curr_str:
+                if len(curr_str) > len(max_str):
+                    max_str = curr_str
+                curr_str = curr_str[curr_str.index(char) + 1:] + char
+            else:
+                curr_str += char
+
+        return max(len(max_str), len(curr_str))
