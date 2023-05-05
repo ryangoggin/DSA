@@ -41,3 +41,24 @@ var lengthOfLongestSubstring = function(s) {
 };
 
 /*DOESN'T USE SLIDING WINDOW*/
+var fasterLengthOfLongestSubstring = function(s) {
+    let maxLength = 0;
+    let maxStr = "";
+
+    if (!s) return 0;
+    if (s.length === 1) return 1;
+
+    for (let i = 0; i < s.length; i++) {
+        let tmpStr = s[i];
+        let index = maxStr.indexOf(tmpStr);
+
+        if (index > -1) {
+            maxStr = maxStr.substring(index + 1);
+        }
+
+        maxStr += tmpStr;
+        maxLength = Math.max(maxLength, maxStr.length);
+    }
+
+    return maxLength;
+};
