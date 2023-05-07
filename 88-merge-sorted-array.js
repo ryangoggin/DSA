@@ -37,7 +37,13 @@ Note that because m = 0, there are no elements in nums1. The 0 is only there to 
 1.) replace all the 0s at the end of nums1 w/ nums2
 2.) sort nums1
 */
+var merge = function(nums1, m, nums2, n) {
+    for (let i = 0; i < nums2.length; i++) {
+        nums1[i + m] = nums2[i];
+    }
 
+    nums1.sort((a,b) => a - b);
+};
 
 
 
@@ -50,7 +56,7 @@ Note that because m = 0, there are no elements in nums1. The 0 is only there to 
 5.) don't need to return og nums1
 */
 
-var merge = function(nums1, m, nums2, n) {
+var slowerMerge = function(nums1, m, nums2, n) {
     let copy = nums1.slice(0, m);
     let p1 = 0;
     let p2 = 0;
