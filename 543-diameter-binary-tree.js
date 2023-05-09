@@ -7,7 +7,7 @@ use a helper function recursively to get depths
 3.) if this node is null, return 0 as it has no depth
 4.) set variables to the recursive calls on the left and right children nodes of root
 5.) set maxPath to the max between itself and the sum of left and right depths
-6.) return the max between the left and right depth, add 1 for the root
+6.) return the max between the left and right depth, add 1 for the root passed in
 7.) outside the helper function, call the helper function on root
 8.) return the maxPath resulting from the helper
 */
