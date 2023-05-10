@@ -3,6 +3,7 @@ given unsorted array of ints, nums, return length of longest consecutive element
 must be O(n)
 */
 
+
 /*
 0.) have 2 counters, current and max length of consecutives
 1.) use sort to sort the ints in nums and make them unique w/ a set
