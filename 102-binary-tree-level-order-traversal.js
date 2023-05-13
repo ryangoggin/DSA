@@ -9,7 +9,7 @@ given root of a binary tree, return the level traversal of its nodes' values (le
 3.) return res after the whie loop
 */
 
-// time: O(n*m) where n is the # of levels in the tree, m is the # of nodes in each level
+// time: O(n) where n is the # of nodes in the tree
 
 var levelOrder = function(root) {
     if (!root) return [];
