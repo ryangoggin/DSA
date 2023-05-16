@@ -14,6 +14,9 @@
 6.) return max area after the loop exits
 */
 
+// time: O(n) where n is the # of heights in the height array
+// space: O(1) only variables holding integers
+
 var maxArea = function(height) {
     let max = 0;
     let left = 0;
