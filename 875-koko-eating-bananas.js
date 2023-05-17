@@ -41,6 +41,16 @@ var minEatingSpeed = function(piles, h) {
 
     // time to eat all piles helper fxn
     const time = (speed) => piles.reduce((sum, pile) => sum + Math.ceil(pile/speed), 0);
+    /*
+    OR CAN DO FOR LOOP INSTEAD OF REDUCE
+    let time = (speed) => {
+        let sum = 0;
+        for (let i = 0; i < piles.length; i++) {
+        sum += Math.ceil(piles[i] / speed);
+        }
+        return sum;
+    };
+    */
 
     let min = 1;
     let max = Math.max(...piles);
