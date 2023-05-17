@@ -35,6 +35,9 @@ Output: 23
 8.) return optimal after the loop finishes
 */
 
+// time: O(nlog(m)), n is # piles, m is max # of bananas in a pile
+// space: O(1) variables just store numbers
+
 var minEatingSpeed = function(piles, h) {
     // edge case
     if (h === piles.length) return Math.max(...piles);
