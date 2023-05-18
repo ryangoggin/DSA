@@ -1,5 +1,5 @@
 /*
-return all unique triplets that add up to target
+return all unique triplets that add up to 0
 */
 
 var threeSum = function(nums) {
