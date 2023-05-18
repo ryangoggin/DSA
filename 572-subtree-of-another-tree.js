@@ -35,8 +35,6 @@ BFS:
 4.) return false at the end of the bfs because subTree was not present
 */
 
-// worse on space b/c use of queue over recursive stack
-
 var isSubtree = function(root, subRoot) {
     var isSameTree = function(p, q) {
     if (!p && !q) return true;
