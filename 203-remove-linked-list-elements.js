@@ -27,6 +27,9 @@ Output: []
 4.) return head
 */
 
+// time: O(n) where n is the number of nodes in the linked list
+// space: O(1) only individual nodes stored as variables
+
 var removeElements = function(head, val) {
     if (!head) return head;
 
