@@ -54,6 +54,7 @@ var goodNodes = function(root) {
 /*
 THIS IS WRONG
 initial thought... only works for given examples... fails 53/63 test cases...
+needs to have a max included with each node
 1.) check if there's a node, return 0 if not
 2.) otherwise do a BFS and start a counter at 1 for the node
 3a.) check if there is a left, if there is one check if it is less than or equal to the node
