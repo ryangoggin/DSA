@@ -44,6 +44,23 @@ var minimumDifference = function(nums, k) {
 
     for (let i = 0; i <= nums.length - k; i ++) {
         let kScores = nums.slice(i, i + k);
+        let diff = kScores[k - 1] - kScores[0];
+        minDiff = Math.min(minDiff, diff);
+    }
+
+    return minDiff;
+};
+
+
+// FASTER TO INDEX ABOVE INSTEAD OF Math.max and Math.min
+var slowerMinimumDifference = function(nums, k) {
+    if (nums.length < 2) return 0;
+
+    let minDiff = Infinity;
+    nums.sort((a,b) => a-b);
+
+    for (let i = 0; i <= nums.length - k; i ++) {
+        let kScores = nums.slice(i, i + k);
         let diff = Math.max(...kScores) - Math.min(...kScores);
         minDiff = Math.min(minDiff, diff);
     }
