@@ -17,6 +17,33 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 */
 
 /*
+FASTER SOLUTION - SLIDING WINDOW
+1.) if a zero is encountered, decrement k
+2.) if the start was a 0 before incrementing, incrememnt k
+3.) if k goes below 0, increment the start
+4.) increment end regardless
+5.) return the difference between the end and start once the loop finishes
+*/
+
+var longestOnes = function(nums, k) {
+    let start = 0
+    let end = 0;
+
+    while(end < nums.length) {
+        if(nums[end] === 0) k--;
+
+        if(k < 0) {
+            if(nums[start] === 0) k++;
+            start++;
+        }
+
+        end++;
+    }
+
+    return end-start;
+};
+
+/*
 INCREDIBLY SLOW SOLUTION
 1.) have a max 1s, 1s counter, and a 0s counter
 2.) have a start pointer and an end pointer
