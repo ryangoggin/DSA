@@ -35,3 +35,14 @@ Output: [true,false,true]
 4b.) if not, push false
 5.) return res
 */
+
+var kidsWithCandies = function(candies, extraCandies) {
+    let max = Math.max(...candies);
+    let res = [];
+
+    for (let i=0; i < candies.length; i++) {
+        (candies[i] + extraCandies >= max) ? res.push(true) : res.push(false);
+    }
+
+    return res;
+};
