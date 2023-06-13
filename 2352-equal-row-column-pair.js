@@ -24,10 +24,10 @@ Explanation: There are 3 equal row and column pairs:
 /*
 slow brute force O(n^2) where n is # of rows/columns
 0.) have a res variable instantiated at 0
-1.) map the rows to the grid in a rows variable
-2.) do the same for cols with a col variable
+1.) map the joined rows to the grid in a rows variable
+2.) do the same for joined cols with a col variable
 3.) iterate through all row/col combos w/ nested for loop O(n^2)
-4.) increment res if row and col are ===
+4.) increment res if row and col strings are ===
 5.) return res
 */
 
