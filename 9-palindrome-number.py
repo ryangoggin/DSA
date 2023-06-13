@@ -15,3 +15,11 @@ class Solution:
             end -= 1
 
         return True
+
+# cool other solution
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        string = str(x)
+        lst = list(string)
+
+        return lst == lst[::-1]
