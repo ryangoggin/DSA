@@ -33,6 +33,55 @@ The total hiring cost is 4.
 */
 
 /*
+use a min heap
+1.) define pq and the min priority queue with comapre method defined as seen below
+2.) set up left, right, and res variables
+3.) to make the first group iterate over candidates and enqueue the left element and the index and increment left
+4.) to make the last group iterate over candidates and enqueue the right element and the index and decrement right
+5.) iterate 0 to k and dequeue and enqueue from the pq as needed to get the k cheapeast workers from hiring groups of candidate size
+6.) return res
+*/
+
+var totalCost = function(costs, k, candidates) {
+    let pq = new MinPriorityQueue({
+        compare: (x, y) => {
+            if (x[0] != y[0]) return x[0] - y[0];
+            return x[1] - y[1];
+        }
+    });
+
+    let n = costs.length
+    let left = 0;
+    let right = n - 1;
+    let res = 0;
+
+    for (let i = 0; i < candidates; i++) {
+        if (left <= right) {
+            pq.enqueue([costs[left], left]);
+            left++;
+        }
+    }
+    for (let i = 0; i < candidates; i++) {
+        if (left <= right) {
+            pq.enqueue([costs[right], right]);
+            right--;
+        }
+    }
+    for (let i = 0; i < k; i++) {
+        let curr = pq.dequeue();
+        res += curr[0];
+        if (curr[1] < left && left <= right) {
+            pq.enqueue([costs[left], left]);
+            left++;
+        } else if (curr[1] > right && left <= right) {
+            pq.enqueue([costs[right], right]);
+            right--;
+        }
+    }
+    return res;
+};
+
+/*
 1.) initialize a removed variable and make a default param total = 0
 2.) base case is k is 0, return the total
 3.) if the amount of candidates in an interview group is greater than or equal to the total candidates left, check over all candidates
