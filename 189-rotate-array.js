@@ -20,12 +20,32 @@ rotate 2 steps to the right: [3,99,-1,-100]
 */
 
 /*
+1.) if k is greater than length of nums, rotate w/ for loop
+2.) otherwise use splice
+*/
+
+var rotate = function(nums, k) {
+    if (k > nums.length) {
+        for (let i = 0; i < k; i++) {
+            let num = nums.pop();
+            nums.unshift(num);
+        }
+        return nums;
+    } else {
+        let rotated = nums.splice(nums.length - k, k);
+        nums.unshift(...rotated);
+
+        return nums;
+    }
+};
+
+/*
 too slow, last test case times out...
 1.) iterate k times
 2.) pop off last item, unshift to front of the array
 */
 
-var rotate = function(nums, k) {
+var tooSlowRotate = function(nums, k) {
     for (let i = 0; i < k; i++) {
         let num = nums.pop();
         nums.unshift(num);
