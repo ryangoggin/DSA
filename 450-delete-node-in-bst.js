@@ -34,6 +34,7 @@ Output: []
 5.) go as far left from the right child as possible as this will be what replaces the deleted node
 5a.) once at furthest left child of the right child, set curr's left to the deleted node's left and return that node's right child
 6.) return the result of the root passed into the helper DFS fxn
+:)
 */
 
 var deleteNode = function(root, key) {
