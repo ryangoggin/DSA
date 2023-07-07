@@ -31,6 +31,45 @@ In both cases, there are five consecutive 'T's.
 */
 
 /*
+correct sliding window
+1.) make a helper that returns true when both Ts and Fs are over k
+2.) while the sliding window is within the range of answerKey:
+2a.) increment the amount of Fs and Ts in the window
+3.) while the helper returns true incrememnt start and decrememnt whichever is leaving the sliding window
+4.) set the max to the max between itself and the length of the window (end - start + 1) amd incrememnt the end
+5.) return the max after the while loop
+*/
+
+var maxConsecutiveAnswers = function(answerKey, k) {
+    let start = 0;
+    let end = 0;
+
+    let numT = 0;
+    let numF = 0;
+
+    let maxTorF = 0;
+
+    const overK = () => numT > k && numF > k;
+
+    while (end < answerKey.length) {
+        if (answerKey[end] === "T") numT++;
+        if (answerKey[end] === "F") numF++;
+
+        while (overK()) {
+            if (answerKey[start] === "T") numT--;
+            if (answerKey[start] === "F") numF--;
+            start++;
+        }
+
+        maxTorF = Math.max(maxTorF, end - start + 1);
+        end++;
+    }
+
+    return maxTorF;
+};
+
+/*
+initial sliding window attempt
 only works for 40/93 test cases...
 0.) initialize swaps, consectutive Ts, consecutive Fs, max Ts, max Fs, and the start of the consecutives at 0
 1.) check for max consecutive Ts first
@@ -58,7 +97,7 @@ var maxConsecutiveAnswers = function(answerKey, k) {
             consecT++;
             maxT = Math.max(consecT, maxT);
         } else if (answerKey[i] === "F" && swaps >= k) {
-            while(answerKey[start] !== "F") {
+            while (answerKey[start] !== "F") {
                 start++;
                 consecT--;
             }
