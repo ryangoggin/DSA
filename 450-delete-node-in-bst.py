@@ -1,4 +1,4 @@
-# see js file for thought process
+# js file has thought process
 
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
