@@ -15,7 +15,23 @@ Input: edges = [[1,2],[5,1],[1,3],[1,4]]
 Output: 1
 */
 
+/*
+center appears in both of the first 2 edges, find it
+1.) destructure the first 2 edges
+2.) if the first of the nodes matches either of the nodes in the second edge, that's the center
+3.) otherwise return the other node in the first edge
+*/
 
+var findCenter = function(edges) {
+    let [node1, node2] = edges[0];
+    let [node3, node4] = edges[1];
+
+    if (node1 === node3 || node1 === node4) {
+        return node1;
+    } else {
+        return node2;
+    }
+};
 
 /*
 slow brute force
