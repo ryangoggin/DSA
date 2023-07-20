@@ -25,6 +25,7 @@ Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulti
 */
 
 /*
+SLOW
 1.) use a pointer and while loop to iterate through the asteroids
 2.) make the left asteroid the one at the pointer and the right one the one after the pointer
 3.) check if there's a collision (left > 0, right < 0)
