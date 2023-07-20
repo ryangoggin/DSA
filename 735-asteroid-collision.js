@@ -25,6 +25,35 @@ Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulti
 */
 
 /*
+use stack
+*/
+
+var asteroidCollision = function(asteroids) {
+    const stack = [];
+
+    for(let i = 0; i < asteroids.length; i++) {
+        const curr = asteroids[i];
+       if(i === 0 || curr > 0 || !stack.length || stack[stack.length-1] < 0) stack.push(curr);
+       else {
+           let top = stack.pop();
+
+            // if top is pos and is equal, do nothign
+           if(top === Math.abs(curr)) continue;
+
+           // if top is pos and is greater, add it back
+           if(top > Math.abs(curr)) stack.push(top);
+           // if top is pos and is less
+           else {
+               i--;
+           }
+
+       }
+    }
+
+    return stack;
+};
+
+/*
 SLOW
 1.) use a pointer and while loop to iterate through the asteroids
 2.) make the left asteroid the one at the pointer and the right one the one after the pointer
@@ -37,7 +66,7 @@ SLOW
 6.) return asteroids array after iteration completes
 */
 
-var asteroidCollision = function(asteroids) {
+var slowAsteroidCollision = function(asteroids) {
     let pointer = 0;
 
     while (pointer < asteroids.length - 1) {
