@@ -19,6 +19,24 @@ Explanation: 2-2 = 1/22 = 1/4 = 0.25
 */
 
 /*
+faster recursive taking advantage of even exponents
+*/
+var myPow = function(x, n) {
+    if (n === 0) {
+        return 1;
+    } else if (n === 1) {
+        return x;
+    } else if (n === -1) {
+        return 1/x;
+    } else if (n%2 === 0) {
+        let tmp = myPow(x, n/2);
+        return tmp*tmp
+    } else {
+        return (x * myPow(x, n-1));
+    }
+};
+
+/*
 recursive: exceeds max call stack size (291/306)... lol
 1.) exponent helper, takes x, n, and res accumulation
 2.) return res if n is 1
