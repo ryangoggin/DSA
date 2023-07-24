@@ -19,12 +19,25 @@ Explanation: 2-2 = 1/22 = 1/4 = 0.25
 */
 
 /*
-recursive:
+recursive: exceeds max call stack size (291/306)... lol
 1.) exponent helper, takes x, n, and res accumulation
 2.) return res if n is 1
 3.) if n is above 1, multiply res by x and recursively call w/ x, n-1, and res
 4.) if n ix below 1, divide res by x and recursively call w/ x, n+1, and res
 */
+var myPow = function(x, n) {
+    function powHelper(x, n, res) {
+        if (n === 1) return res;
+
+        if (n > 1) {
+            return powHelper(x, n-1, res*x);
+        } else {
+            return powHelper(x, n+1, res/x);
+        }
+    }
+
+    return powHelper(x, n, x);
+};
 
 /*
 brute force iteration (too slow, only gets 300/306):
