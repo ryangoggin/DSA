@@ -21,6 +21,26 @@ Explanation: There is 1 choose 1 = 1 total combination.
 iterative
 */
 
+var combine = function(n, k) {
+    let res = [];
+
+    function generateCombs(first, k, currComb) {
+        if (k === 0) {
+            res.push([...currComb]);
+            return
+        }
+
+        for (let i = first; i <= n; i++) {
+            currComb.push(i);
+            generateCombs(i+1, k-1, currComb);
+            currComb.pop();
+        }
+    }
+
+    generateCombs(1, k, []);
+    return res
+};
+
 /*
 backtracking
 1.) have a res function to hold all combos
