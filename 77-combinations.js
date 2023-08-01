@@ -18,6 +18,10 @@ Explanation: There is 1 choose 1 = 1 total combination.
 */
 
 /*
+iterative
+*/
+
+/*
 backtracking
 1.) have a res function to hold all combos
 2.) have a backtrack helper function to get all the combos
