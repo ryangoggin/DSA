@@ -23,6 +23,33 @@ Output: false
 */
 
 /*
+dp
+1.) use nested for loops to check slices for words in the set
+2.) use the dp array to store when successful words line up
+3.) once done iterating, return whatever the last element of the dp array is (will be true if word break is successful, false otherwise)
+*/
+
+var wordBreak = (s, wordDict) => {
+    if (wordDict == null || wordDict.length === 0) return false;
+
+    let wordSet = new Set(wordDict);
+    let dp = Array(s.length + 1).fill(false);
+    dp[0] = true;
+
+    for (let end = 1; end <= s.length; end++) {
+      for (let start = 0; start < end; start++) {
+        let word = s.slice(start, end);
+        if (dp[start] === true && wordSet.has(word)) {
+          dp[end] = true;
+          break;
+        }
+      }
+    }
+
+    return dp[s.length];
+  };
+
+/*
 brute force lol
 1.) set a success variable to 0
 2.) make a recursive helper to check if s can successfully be broken up
