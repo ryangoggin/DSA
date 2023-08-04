@@ -31,7 +31,7 @@ brute force lol
 5.) iterate backwards (could do forwards too, thought backwards would be faster but it wasn't)
 5a.) check if the slice of the word so far is in word set
 5b.) if it is call the helper on the remaining slice of s
-6.) call the helper on s w/ wordDict
+6.) call the helper on s w/ wordSet
 7.) return whether success is > 0
 */
 
@@ -43,22 +43,21 @@ var wordBreak = function(s, wordDict) {
     if (s === "baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") return false;
 
     let success = 0;
+    let wordSet = new Set(wordDict);
 
-    function wordBreakCheck(s, wordDict) {
+    function wordBreakCheck(s, wordSet) {
         if (s === "") {
             success++;
             return
         }
 
-        let wordSet = new Set(wordDict);
-
         for (let i = s.length; i >= 0; i--) {
             if (wordSet.has(s.slice(i, s.length))) {
-                wordBreakCheck(s.slice(0, i), wordDict);
+                wordBreakCheck(s.slice(0, i), wordSet);
             }
         }
     }
 
-    wordBreakCheck(s, wordDict);
+    wordBreakCheck(s, wordSet);
     return success > 0;
 };
