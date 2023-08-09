@@ -20,7 +20,43 @@ Explanation: Let the indices 1 and 3 form a pair. The difference of that pair is
 */
 
 /*
-failed attempt... didn't realize negative diffs could be used... passes 1343/1582... added conditionals to get to 1392/1582... not doing anymore
+greedy binary search (hi is max possible diff of the array, lo is 0, mid is each potential max diff)
+can form pairs helper determines whether it's possible to form enough pairs under that max potential diff
+*/
+
+var minimizeMax = function minimizeMax(nums, p) {
+    nums.sort((a, b) => a - b);
+
+    let left = 0
+    let right = nums[nums.length - 1] - nums[0];
+
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+        if (canFormPairs(nums, mid, p)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+
+    return left;
+}
+
+function canFormPairs(nums, mid, p) {
+    let count = 0;
+    for (let i = 0; i < nums.length - 1 && count < p;) {
+        if (nums[i+1] - nums[i] <= mid) {
+            count++;
+            i += 2;
+        } else {
+            i++;
+        }
+    }
+    return count >= p;
+}
+
+/*
+failed attempt... passes 1343/1582... added conditionals to get to 1392/1582... not doing anymore
 2 pointer
 1.) set up the first and second pointers
 2.) set the res to 0
