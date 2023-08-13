@@ -22,6 +22,27 @@
 
 #######################################################################
 
+# correct implementation
+# 1.)
+
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+        self.sum = []
+        currSum = 0
+        for num in nums:
+            currSum += num
+            self.sum.append(currSum)
+
+
+    def sumRange(self, left: int, right: int) -> int:
+        if left == 0:
+            return self.sum[right]
+        return self.sum[right] - self.sum[left-1]
+
+
+
 # slow way that isn't what they want
 # 1.) just make nums the property when initialized
 # 2.) iterate from left to right indices and add to a sum
