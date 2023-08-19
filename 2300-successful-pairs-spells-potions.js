@@ -28,6 +28,9 @@ Thus, [2,0,2] is returned.
 
 /*
 binary search
+time: O(nlog(n) + mlog(n)) --> O((m+n)log(n)) where m is length of spells and n is length of potions
+space: O(n) where n is length of spells (res is length of spells)
+
 1.) sort potions to make the bianry search on that array work
 2.) make a res array to hold num of products above success
 3.) iterate across spells (DON'T sort spells to maintain their order for res)
