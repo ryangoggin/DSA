@@ -27,6 +27,65 @@ Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We ret
 */
 
 /*
+correct two pointer implementation
+1.) set pointers at opposite ends of the array
+2.) while the target isn't met, decrement second pointer if combo is over target
+3.) otherwise increment first pointer
+4.) return an array of the pointers, each + 1
+*/
+
+var twoSum = function(numbers, target) {
+    let p1 = 0;
+    let p2 = numbers.length - 1;
+
+    while (numbers[p1] + numbers[p2] !== target) {
+        if (numbers[p1] + numbers[p2] > target) {
+            p2--;
+        } else {
+            p1++;
+        }
+    }
+
+    return [p1 + 1, p2 + 1];
+};
+
+/*
+time: O(n), space: O(n) --> they wanted constant space but oops
+1.) use a set for nums to have O(1) accessing
+2.) iterate over numbers and set a first and second value using the current elements diff between itself and target
+3.) break out of the loop once the first set of numbers is found
+4.) iterate over the numbers again and get their indices into a res array once they match first or second
+5.) return inside the loop once the res array is of length 2
+*/
+
+var twoSum = function(numbers, target) {
+    let res = [];
+    let set = new Set(numbers);
+    let first, second;
+
+    for (let i = 0; i < numbers.length; i++) {
+        let diff = target - numbers[i];
+
+        if (set.has(diff)) {
+            first = numbers[i];
+            second = diff;
+            break;
+        }
+    }
+
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] === first) {
+            res.push(i+1);
+        } else if (numbers[i] === second) {
+            res.push(i+1);
+        }
+
+        if (res.length === 2) return res;
+    }
+
+};
+
+/*
 brute force two pointer, too slow O(n^2)
 1.) go over every index combination in a while loop
 2.) once the first match is reached, return the pointers in an array
