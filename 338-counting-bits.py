@@ -23,6 +23,21 @@
 
 #####################################################################################
 
+# faster DP - O(n)
+# 1.) start a counter w/ 0 as the only element
+# 2.) iterate 1 to n
+# 3.) append the bit shift of counter plus current number mod 2
+# 4.) return the counter
+
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        counter = [0]
+
+        for i in range(1, n+1):
+            counter.append(counter[i >> 1] + i % 2)
+
+        return counter
+
 # brute force - O(n^2)
 # 0.) make an ans array
 # 1.) iterate 0 to n, convert each number to binary and trim off the 0b
