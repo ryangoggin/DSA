@@ -26,7 +26,7 @@
 # faster DP - O(n)
 # 1.) start a counter w/ 0 as the only element
 # 2.) iterate 1 to n
-# 3.) append the bit shift of counter plus current number mod 2
+# 3.) append the right bit shift of counter plus current number mod 2
 # 4.) return the counter
 
 class Solution:
