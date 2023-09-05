@@ -19,6 +19,30 @@ Output: "ay"
 */
 
 /*
+faster O(n) way, use a stack
+1.) set the res as an empty array that will act as a stack
+2.) iterate over s
+3.) if the current letter doesn't match the last letter of the res stack, push that letter onto the stack
+4.) otherwise, pop off the top of the res stack as it's an adjacent duplicate
+5.) once loop completes, return the joined together res array
+*/
+
+var removeDuplicates = function(s) {
+    let res = [];
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== res[res.length - 1]) {
+            res.push(s[i]);
+        } else {
+            res.pop();
+        }
+    }
+
+    return res.join("");
+};
+
+/*
+only passes 104/106 cases
 too slow, almost O(m*n) where m is # of adjacent duplicates, n is length of each s as duplicates are removed
 1.) iterate over each char in s, if the current and next letters match, make a new s
 2.) new s will be two slices concatenated around the duplicates such that they are excluded from new s
