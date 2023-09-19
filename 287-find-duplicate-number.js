@@ -15,6 +15,48 @@ Output: 3
 */
 
 /*
+actual space constant solution --> Floyd's cycle detection
+1.) use slow and fast pointers
+2.) use do and while loops to find the dupe
+*/
+
+var findDuplicate = function(nums) {
+    let slow = nums[0];
+    let fast = nums[0];
+
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow !== fast);
+
+    slow = nums[0];
+    while (slow !== fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+
+    return slow;
+};
+
+/*
+solution that works but is O(n) space not constant
+1.) use a set to track if a num has appeared in nums already
+2.) return the num once it is already in the set
+*/
+
+var findDuplicate = function(nums) {
+    let set = new Set();
+
+    for (let num of nums) {
+        if (set.has(num)) {
+            return num;
+        } else {
+            set.add(num);
+        }
+    }
+};
+
+/*
 // time: ~O(n^2) where n is length of nums --> too slow to actually pass, only passes 57/58 test cases
 1.) 2 pointer, check each nums combo w/ a while loop
 2.) return when there's a match
