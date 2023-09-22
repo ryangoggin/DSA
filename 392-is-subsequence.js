@@ -21,6 +21,28 @@ Output: false
 4.) after iteration, return whether match is the length of s
 */
 
+// faster version that returns as soon as match is made, doesn't wait to go through all of t
+var isSubsequence = function(s, t) {
+    if (s === "") return true;
+
+    let match = 0;
+    let sPointer = 0;
+
+    for (let tPointer = 0; tPointer < t.length; tPointer++) {
+        if (t[tPointer] === s[sPointer]) {
+            match++;
+            sPointer++;
+        }
+
+        if (match === s.length) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+// slower version
 var isSubsequence = function(s, t) {
     let match = 0;
     let sPointer = 0;
