@@ -27,7 +27,7 @@ class Solution:
             return [-1, -1]
 
         start, end = foundPos, foundPos
-        targetStart, targetEnd = None, None
+        targetStart, targetEnd = False, False
 
         while nums[start] == target:
             if start == 0:
