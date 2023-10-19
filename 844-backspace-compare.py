@@ -21,6 +21,11 @@
 
 ############################################################
 
+# time O(n)
+# 1.) make lists to hold the final typed out s and t
+# 2.) iterate over s and t following rule where # is backspace
+# 3.) return the equivalence comparison of each array joined into a string
+
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         res_s = []
