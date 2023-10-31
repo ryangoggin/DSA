@@ -16,3 +16,13 @@ class Solution:
                 res += 1
             else:
                 continue
+
+# faster, no iteration
+
+class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        n = len(candyType)
+        maxCandy = n//2
+        unique = set(candyType)
+
+        return min(maxCandy, len(unique))
