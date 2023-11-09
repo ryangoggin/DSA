@@ -48,4 +48,5 @@ class Solution:
                 res += 1
                 left = right
 
+        # number gets really big, return res modulo of 10^9 + 7
         return res % (10**9 + 7)
