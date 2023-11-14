@@ -39,7 +39,7 @@
 # 5.) create a unique set for that character
 # 6.) iterate the indices between first and last occurrences, add each character to the unique set to remove any dupes
 # 7.) increment the res by the length of the unique set between the first and last occurrences of that character
-# 8.) return res after iterating
+# 8.) return res after iter fating
 
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
