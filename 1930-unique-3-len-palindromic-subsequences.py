@@ -31,6 +31,41 @@
 
 ################################################################
 
+# faster O(n) where n is the number of characters between each first and last occurrence of any of the letters
+# 1.) populate a first occurrence and last occurrence list with each of the 26 letters first and last occurrences in the s
+# 2.) initialize res to be 0
+# 3.) iterate over all 26 letters (indices 0-25 of first and last occurrence lists)
+# 4.) if the character isn't present (first or last occurrence are inf or -inf)
+# 5.) create a unique set for that character
+# 6.) iterate the indices between first and last occurrences, add each character to the unique set to remove any dupes
+# 7.) increment the res by the length of the unique set between the first and last occurrences of that character
+# 8.) return res after iterating
+
+class Solution:
+    def countPalindromicSubsequence(self, s: str) -> int:
+        first_occurrence = [float('inf')] * 26
+        last_occurrence = [float('-inf')] * 26
+
+        for i in range(len(s)):
+            idx = ord(s[i]) - ord('a')
+            first_occurrence[idx] = min(first_occurrence[idx], i)
+            last_occurrence[idx] = max(last_occurrence[idx], i)
+
+        res = 0
+
+        for i in range(26):
+            if first_occurrence[i] == float('inf') or last_occurrence[i] == float('-inf'):
+                continue
+
+            unique = set()
+
+            for j in range(first_occurrence[i] + 1, last_occurrence[i]):
+                unique.add(s[j])
+
+            res += len(unique)
+
+        return res
+
 # brute force checking every possible subsequence, too slow to pass. time is O(n^3) lol
 
 class Solution:
