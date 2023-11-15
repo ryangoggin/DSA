@@ -31,6 +31,24 @@
 
 ###################################################################################################33
 
+# more efficient O(n*logn) solution, only needs one iteration but needs to sort the list
+# 1.) sort arr
+# 2.) set the max val at 1 as this will always be the first val of arr
+# 3.) iterate from the 2nd index of arr on
+# 4.) if the current element of the array is larger than max_val, increment max val by 1
+# 5.) return max val after iterating
+
+class Solution:
+    def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
+        arr.sort()
+        max_val = 1
+
+        for i in range(1, len(arr)):
+            if arr[i] > max_val:
+                max_val += 1
+
+        return max_val
+
 # brute force, too slow O(m*n) where m is arr length and n is number of moves that need to be made
 # only passes 40/49
 
