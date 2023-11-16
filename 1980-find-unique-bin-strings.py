@@ -1,0 +1,13 @@
+# see js file for thought process
+
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        res = ""
+
+        for i in range(len(nums)):
+            if nums[i][i] == "0":
+                res += "1"
+            else:
+                res += "0"
+
+        return res
