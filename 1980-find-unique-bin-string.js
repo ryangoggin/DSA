@@ -18,7 +18,8 @@ Explanation: "101" does not appear in nums. "000", "010", "100", and "110" would
 */
 
 /*
-
+time - O(n)
+1.) someone figured out that the opposite of the diagonal bits is a unique binary number
 */
 
 var findDifferentBinaryString = function(nums) {
