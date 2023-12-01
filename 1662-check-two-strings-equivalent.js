@@ -17,6 +17,15 @@
 // Input: word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
 // Output: true
 
+
+/*
+time - O(n) where n is the length of the word1 or word2 array
+space - O(1)
+
+1.) return the equivalence comparison of the two word arrays joined into a string each
+*/
+
+
 var arrayStringsAreEqual = function(word1, word2) {
     return word1.join("") === word2.join("");
 };
