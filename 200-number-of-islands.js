@@ -83,3 +83,53 @@ var numIslands = function(grid) {
 
     return numIslands;
 };
+
+
+var numIslands = function(grid) {
+    let res = 0;
+    let m = grid.length;
+    let n = grid[0].length;
+
+    for (let row = 0; row < m; row++) {
+        for (let col = 0; col < n; col++) {
+            if (grid[row][col] === "1") {
+                res++;
+                sinkIsland(row, col);
+            }
+        }
+    }
+
+    function sinkIsland(row, col) {
+        grid[row][col] = "0";
+
+        // up
+        if (row > 0) {
+            if (grid[row-1][col] === "1") {
+                sinkIsland(row-1, col);
+            }
+        }
+
+        // right
+        if (col < n-1) {
+            if (grid[row][col+1] === "1") {
+                sinkIsland(row, col+1);
+            }
+        }
+
+        // down
+        if (row < m-1) {
+            if (grid[row+1][col] === "1") {
+                sinkIsland(row+1, col);
+            }
+        }
+
+        // left
+        if (col > 0) {
+            if (grid[row][col-1] === "1") {
+                sinkIsland(row, col-1);
+            }
+        }
+    }
+
+    return res;
+};
