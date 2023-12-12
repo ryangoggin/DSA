@@ -17,7 +17,7 @@ Output: 12
 */
 
 /*
-time- O(nlogn) --> there's a way to optimize with O(n) (just find 2 largest elements on a single iteration)
+time- O(nlogn) --> there's a way to optimize with O(n) (just find 2 largest elements on a single iteration, see py file)
 1.) sort the array
 2.) return 1st element-1 * 2nd element-1
 */
