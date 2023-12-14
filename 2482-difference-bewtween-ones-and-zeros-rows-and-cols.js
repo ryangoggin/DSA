@@ -35,6 +35,36 @@ Explanation:
 */
 
 /*
+optimal
+*/
+
+var onesMinusZeros = function(grid) {
+    let m = grid.length;
+    let n = grid[0].length;
+
+    let rowOnes = new Array(m).fill(0);
+    let colOnes = new Array(n).fill(0);
+
+    // Count ones in each row and column
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            rowOnes[i] += grid[i][j];
+            colOnes[j] += grid[i][j];
+        }
+    }
+
+    // Calculate the difference matrix
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            grid[i][j] = 2 * (rowOnes[i] + colOnes[j]) - m - n;
+        }
+    }
+
+    return grid;
+};
+
+
+/*
 unoptimal brute force (O(m^2 x n^2))
 
 too slow to pass
