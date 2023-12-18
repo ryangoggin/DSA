@@ -20,6 +20,34 @@
 # 1 <= nums[i] <= 104
 
 ###########################################################################3
+# time- O(n)
+# space- O(1)
+# 1.) in one pass get greatest, second greatest, least, and second least elements
+# 2.) return diff of product of greatest and second greatest and product of least and second least
+
+class Solution:
+    def maxProductDifference(self, nums: List[int]) -> int:
+        largest = 1
+        secondLargest = 1
+        smallest = 10000
+        secondSmallest = 10000
+
+        for num in nums:
+            if num < smallest:
+                secondSmallest = smallest
+                smallest = num
+            elif num < secondSmallest:
+                secondSmallest = num
+
+            if num > largest:
+                secondLargest = largest
+                largest = num
+            elif num > secondLargest:
+                secondLargest = num
+
+        return (largest * secondLargest) - (smallest * secondSmallest)
+
+
 # time- O(nlogn) -> sorting nums, not optimal!
 # space- O(1)
 # 1.) sort nums
