@@ -1,0 +1,35 @@
+/*
+Given n points on a 2D plane where points[i] = [xi, yi], Return the widest vertical area between two points such that no points are inside the area.
+A vertical area is an area of fixed-width extending infinitely along the y-axis (i.e., infinite height). The widest vertical area is the one with the maximum width.
+Note that points on the edge of a vertical area are not considered included in the area.
+
+Example 1:
+Input: points = [[8,7],[9,9],[7,4],[9,7]]
+Output: 1
+Explanation: Both the red and the blue area are optimal.
+
+Example 2:
+Input: points = [[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]
+Output: 3
+*/
+
+/*
+time- O(nlogn) (not optimal)
+space- O(1)
+1.) sort points by the x coordinate
+2.) start res at 0
+3.) iterate through sorted points (excluding last), set res to the max between itself and the width between current and next points
+4.) return res
+*/
+
+var maxWidthOfVerticalArea = function(points) {
+    points.sort((a, b) => a[0] - b[0]);
+
+    let res = 0;
+
+    for (let i = 0; i < points.length - 1; i++) {
+        res = Math.max((points[i+1][0] - points[i][0]), res);
+    }
+
+    return res;
+};
