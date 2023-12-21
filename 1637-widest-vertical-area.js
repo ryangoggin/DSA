@@ -14,7 +14,7 @@ Output: 3
 */
 
 /*
-time- O(nlogn) (not optimal)
+time- O(nlogn) (not optimal?s)
 space- O(1)
 1.) sort points by the x coordinate
 2.) start res at 0
